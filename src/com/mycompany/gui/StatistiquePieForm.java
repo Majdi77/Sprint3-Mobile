@@ -68,8 +68,8 @@ public class StatistiquePieForm extends BaseForm {
     private boolean drawOnMutableImage;
    
     
-    private double nbr_feedback = 45;
-    private double nbr_reclamation = 29;
+    private double nbr_ParticipantSatisfait = 132;
+    private double nbr_ParticipantNonSatisfait= 26;
    
     Form current;
 BaseForm form;
@@ -90,7 +90,7 @@ BaseForm form;
 
         Label spacer1 = new Label();
         Label spacer2 = new Label();
-        addTab(swipe, res.getImage("back-logo.jpeg"), spacer1, "Bienvenue");
+        addTab(swipe, res.getImage("sponsor.jpg"), spacer1, "Bienvenue");
                 
         swipe.setUIID("Container");
         swipe.getContentPane().setUIID("Container");
@@ -132,16 +132,18 @@ BaseForm form;
         
         ButtonGroup barGroup = new ButtonGroup();
         
-        RadioButton all = RadioButton.createToggle("Feedback", barGroup);
+        RadioButton all = RadioButton.createToggle("Satisfait", barGroup);
        
         all.setUIID("SelectBar");
-        RadioButton popular = RadioButton.createToggle("Categorie Reclamation", barGroup);
+        RadioButton popular = RadioButton.createToggle("Mes Participant", barGroup);
         popular.setUIID("SelectBar");
-        RadioButton feedback = RadioButton.createToggle("Feedback", barGroup);
+        RadioButton feedback = RadioButton.createToggle("Statistique", barGroup);
         feedback.setUIID("SelectBar");
-        RadioButton profile = RadioButton.createToggle("Statistique", barGroup);
+        RadioButton profile = RadioButton.createToggle("Ajouter", barGroup);
         profile.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
+      
+
         
         add(LayeredLayout.encloseIn(
                 GridLayout.encloseIn(3, all, popular,profile),
@@ -242,7 +244,7 @@ BaseForm form;
        
        image.addActionListener(e -> {
            try{
-           new AjoutReclamationForm(Resources.getGlobalResources()).show();
+           new AjoutParticipantForm(Resources.getGlobalResources()).show();
            }catch(Exception exx) {
                
            }
@@ -281,15 +283,15 @@ BaseForm form;
     public void createPieChartForm() {
         
         //chna3ml stat feedback par rapport l reclamation 
-        double total = nbr_feedback + nbr_reclamation;
+        double total = nbr_ParticipantSatisfait + nbr_ParticipantNonSatisfait;
         
         //values
-        double prcntFeed = (nbr_feedback *100)/total;
+        double prcntFeed = (nbr_ParticipantSatisfait *100)/total;
         
-        double prcntRec = (nbr_reclamation * 100)/total;
+        double prcntRec = (nbr_ParticipantNonSatisfait* 100)/total;
         
         //colors set:
-        int[]colors = new int[]{0xf4b342, 0x52b29a};
+        int[]colors = new int[]{0xf4b546, 0x52b255};
         
         DefaultRenderer renderer = buildCatRendrer(colors);
         renderer.setLabelsColor(0x000000); // black color for labels.
@@ -310,7 +312,7 @@ BaseForm form;
         ChartComponent c  = new ChartComponent(chart);
         
         String []messages = {
-            "Statistique feedback % reclamations"
+            "Participant Satisfait % NonSatisfait"
         };
         
         SpanLabel message = new SpanLabel(messages[0], "WelcomeMessage");
@@ -327,8 +329,8 @@ BaseForm form;
         
         CategorySeries series = new CategorySeries(title);
         
-        series.add("Reclamation",prcntRec);
-        series.add("Feedback",prcntFeed);
+        series.add("NonSatisfait",prcntRec);
+        series.add("Satisfait",prcntFeed);
         
         return series;
     }
