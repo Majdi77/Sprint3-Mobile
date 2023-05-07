@@ -1,28 +1,13 @@
 /*
- * Copyright (c) 2016, Codename One
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
- * documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
- * the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
- * and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions 
- * of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
- * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
- * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
- * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-
 package com.mycompany.gui;
 
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.ui.Component;
 import com.codename1.ui.Display;
-import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
@@ -34,13 +19,11 @@ import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 
 /**
- * Base class for the forms with common functionality
  *
- * @author Shai Almog
+ * @author rayan
  */
-public class BaseForm extends Form {
-
-    public BaseForm() {
+public class BaseForm extends Form{
+        public BaseForm() {
     }
 
     public BaseForm(Layout contentPaneLayout) {
@@ -79,11 +62,12 @@ public class BaseForm extends Form {
         tb.addComponentToSideMenu(LayeredLayout.encloseIn(
                 sl,
                 FlowLayout.encloseCenterBottom(
-                        new Label(res.getImage("profile-pic.jpg"), "PictureWhiteBackgrond"))
+                        new Label(res.getImage("rayan.jpg"), "PictureWhiteBackgrond"))
         ));
         
-        tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new NewsfeedForm(res).show());
-        tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, e -> new ProfileForm(res).show());
-        tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());
+      //  tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new NewsfeedForm(res).show());
+       // tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, e -> new ProfileForm(res).show());
+       // tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());
     }
+
 }

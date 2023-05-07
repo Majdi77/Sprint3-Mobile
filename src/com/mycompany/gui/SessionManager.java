@@ -9,20 +9,19 @@ import com.codename1.io.Preferences;
 
 /**
  *
- * @author Lenovo
+ * @author rayan
  */
 public class SessionManager {
-    
-    public static Preferences pref ; // 3ibara memoire sghira nsajlo fiha data 
-    
-    
-    
-    // hethom données ta3 user lyt7b tsajlhom fi session  ba3d login 
-    private static int id ; 
-    private static String userName ; 
-    private static String email; 
-    private static String passowrd ;
+        public static Preferences pref ; // 3ibara memoire sghira nsajlo fiha data 
+
+    private static int id;
+    private static String username;
+    private static String email;
     private static String photo;
+    private static String nom;
+    private static String prenom;
+    private static String motdepasse;
+        private static String roles;
 
     public static Preferences getPref() {
         return pref;
@@ -33,48 +32,67 @@ public class SessionManager {
     }
 
     public static int getId() {
-        return pref.get("id",id);// kif nheb njib id user connecté apres njibha men pref 
+        return id;
     }
 
     public static void setId(int id) {
-        pref.set("id",id);//nsajl id user connecté  w na3tiha identifiant "id";
+        SessionManager.id = id;
     }
 
-    public static String getUserName() {
-        return pref.get("username",userName);
+    public static String getUsername() {
+        return username;
     }
 
-    public static void setUserName(String userName) {
-         pref.set("username",userName);
+    public static void setUsername(String username) {
+        SessionManager.username = username;
     }
 
     public static String getEmail() {
-        return pref.get("email",email);
+        return email;
     }
 
     public static void setEmail(String email) {
-         pref.set("email",email);
-    }
-
-    public static String getPassowrd() {
-        return pref.get("passowrd",passowrd);
-    }
-
-    public static void setPassowrd(String passowrd) {
-         pref.set("passowrd",passowrd);
+        SessionManager.email = email;
     }
 
     public static String getPhoto() {
-        return pref.get("photo",photo);
+        return photo;
     }
 
     public static void setPhoto(String photo) {
-         pref.set("photo",photo);
+        SessionManager.photo = photo;
     }
-    
-    
-    
-    
-    
-    
+
+    public static String getNom() {
+        return nom;
+    }
+
+    public static void setNom(String nom) {
+        SessionManager.nom = nom;
+    }
+
+    public static String getPrenom() {
+        return prenom;
+    }
+
+    public static void setPrenom(String prenom) {
+        SessionManager.prenom = prenom;
+    }
+
+    public static String getMotdepasse() {
+        return motdepasse;
+    }
+
+    public static void setMotdepasse(String motdepasse) {
+        SessionManager.motdepasse = motdepasse;
+    }
+
+    public static String getRoles() {
+        return roles;
+    }
+
+    public static void setRoles(String roles) {
+       SessionManager.roles = roles; //To change body of generated methods, choose Tools | Templates.
+    }
+   
 }

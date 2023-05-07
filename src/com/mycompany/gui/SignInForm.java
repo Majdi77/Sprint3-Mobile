@@ -1,26 +1,13 @@
 /*
- * Copyright (c) 2016, Codename One
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
- * documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
- * the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, 
- * and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions 
- * of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
- * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
- * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
- * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-
 package com.mycompany.gui;
 
 import com.codename1.components.FloatingHint;
 import com.codename1.ui.Button;
+import com.codename1.ui.Command;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
@@ -33,9 +20,8 @@ import com.codename1.ui.util.Resources;
 import com.mycompany.services.ServiceUtilisateur;
 
 /**
- * Sign in UI
  *
- * @author Shai Almog
+ * @author Rayan
  */
 public class SignInForm extends BaseForm {
 
@@ -52,9 +38,9 @@ public class SignInForm extends BaseForm {
         
         add(BorderLayout.NORTH, new Label(res.getImage("Logo.png"), "LogoLabel"));
         
-        TextField username = new TextField("", "Username", 20, TextField.ANY);
+        TextField email = new TextField("", "email", 20, TextField.ANY);
         TextField password = new TextField("", "Password", 20, TextField.PASSWORD);
-        username.setSingleLineTextArea(false);
+        email.setSingleLineTextArea(false);
         password.setSingleLineTextArea(false);
         Button signIn = new Button("Sign In");
         Button signUp = new Button("Sign Up");
@@ -73,7 +59,7 @@ public class SignInForm extends BaseForm {
         
         
         Container content = BoxLayout.encloseY(
-                new FloatingHint(username),
+                new FloatingHint(email),
                 createLineSeparator(),
                 new FloatingHint(password),
                 createLineSeparator(),
@@ -84,24 +70,46 @@ public class SignInForm extends BaseForm {
         add(BorderLayout.SOUTH, content);
         signIn.requestFocus();
         
-        signIn.addActionListener(e -> 
+        /*signIn.addActionListener(e -> 
         {
-               ServiceUtilisateur.getInstance().signin(username, password, res);
+               UserService.getInstance().signin(email, password, res);
 
            
-        });
+        });*/
+           signIn.addActionListener(e -> 
+        { 
+             /*if (new ServiceUtilisateur().signin(email, password ,res).equals("failed")) {
+       Dialog.show("Echec d'authentification","Username ou mot de passe éronné","OK", null);*/
+            if (email.getText().length() == 0|| password.getText().length() == 0) {
+                Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
+            }
+            else if (!email.getText().toString().contains("@") || !email.getText().toString().contains(".")) {
+    // show an error dialog
+    Dialog.show("Error", "Please enter a valid email address.", "OK", null);   
+    } 
+            
+  
+             else{
+           new ServiceUtilisateur().signin(email, password ,res);
+               new Profile(res).show();
+          //  new AddStudent().show();
+           //  }
+           
+            }});
         
         
         
         //Mp oublie event
         
-        mp.addActionListener((e) -> {
+       mp.addActionListener((e) -> {
            
-            new AjoutReclamationForm(res).show();
+            new ActivateForm(res).show();
             
             
         });
         
     }
+
+
     
 }

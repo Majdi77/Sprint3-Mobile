@@ -16,7 +16,7 @@
  * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-/*
+
 package com.mycompany.gui;
 
 import com.codename1.components.FloatingHint;
@@ -36,7 +36,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 import com.mycompany.services.ServiceUtilisateur;
-//import com.sun.mail.smtp.SMTPTransport;
+import com.sun.mail.smtp.SMTPTransport;
 import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message;
@@ -44,12 +44,12 @@ import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
 /**
  * Account activation UI
  *
  * @author Shai Almog
  */
-/*
 public class ActivateForm extends BaseForm {
 
     TextField email;
@@ -118,7 +118,7 @@ public class ActivateForm extends BaseForm {
     
     //sendMail
     
-    public void sendMail(Resources res) {
+   public void sendMail(Resources res) {
         try {
             
             Properties props = new Properties();
@@ -131,7 +131,7 @@ public class ActivateForm extends BaseForm {
             
             MimeMessage msg = new MimeMessage(session);
             
-            msg.setFrom(new InternetAddress("Reintialisation mot de passe <monEmail@domaine.com>"));
+            msg.setFrom(new InternetAddress("Reintialisation mot de passe <MonEmail@domaine.com>"));
             msg.setRecipients(Message.RecipientType.TO, email.getText().toString());
             msg.setSubject("Application nom  : Confirmation du ");
             msg.setSentDate(new Date(System.currentTimeMillis()));
@@ -144,7 +144,7 @@ public class ActivateForm extends BaseForm {
            
           SMTPTransport  st = (SMTPTransport)session.getTransport("smtps") ;
             
-          st.connect("smtp.gmail.com",465,"your email","your password");
+          st.connect("smtp.gmail.com",465,"rayan.lahmar@esprit.tn","201JMT3276");
            
           st.sendMessage(msg, msg.getAllRecipients());
             
@@ -156,4 +156,3 @@ public class ActivateForm extends BaseForm {
     }
     
 }
-*/
