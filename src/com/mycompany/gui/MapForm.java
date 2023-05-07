@@ -21,6 +21,7 @@ import com.codename1.ui.Form;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.util.Resources;
 import java.io.IOException;
 import java.util.List;
 
@@ -101,6 +102,14 @@ f.show();
  //f.getToolbar().addCommandToRightBar("back", null, (ev)->{ new AjoutReclamationForm(f).show()});
 
     
+    }
+
+    MapForm(Resources res) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void show() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

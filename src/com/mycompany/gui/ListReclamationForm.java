@@ -122,7 +122,7 @@ public class ListReclamationForm extends BaseForm{
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
         ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Reclamations", barGroup);
+        RadioButton mesListes = RadioButton.createToggle("Mes cours", barGroup);
         mesListes.setUIID("SelectBar");
         RadioButton liste = RadioButton.createToggle("Autres", barGroup);
         liste.setUIID("SelectBar");
@@ -285,7 +285,7 @@ public class ListReclamationForm extends BaseForm{
             
             Dialog dig = new Dialog("Suppression");
             
-            if(dig.show("Suppression","Vous voulez supprimer ce reclamation ?","Annuler","Oui")) {
+            if(dig.show("Suppression","Vous voulez supprimer ce cours ?","Annuler","Oui")) {
                 dig.dispose();
             }
             else {

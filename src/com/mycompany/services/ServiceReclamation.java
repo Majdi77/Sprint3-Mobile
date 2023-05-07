@@ -52,7 +52,7 @@ public class ServiceReclamation {
     //ajout 
     public void ajoutReclamation(Reclamation reclamation) {
         
-        String url =Statics.BASE_URL+"/addReclamation?objet="+reclamation.getObjet()+"&description="+reclamation.getdescription()+"&user="+reclamation.getIduser(); // aa sorry n3adi getId lyheya mech ta3 user ta3 reclamation
+        String url =Statics.BASE_URL+"/addReclamation?objet="+reclamation.getObjet()+"&description="+reclamation.getDescription()+"&user="+reclamation.getIduser(); // aa sorry n3adi getId lyheya mech ta3 user ta3 reclamation
         
         req.setUrl(url);
         req.addResponseListener((e) -> {
@@ -98,7 +98,7 @@ public class ServiceReclamation {
                         
                         re.setId((int)id);
                         re.setObjet(objet);
-                        re.setdescription(description);
+                        re.setDescription(description);
                         re.setEtat((int)etat);
                         
                         //Date 
@@ -149,7 +149,7 @@ public class ServiceReclamation {
                 Map<String,Object>obj = jsonp.parseJSON(new CharArrayReader(new String(str).toCharArray()));
                 
                 reclamation.setObjet(obj.get("obj").toString());
-                reclamation.setdescription(obj.get("description").toString());
+                reclamation.setDescription(obj.get("description").toString());
                 reclamation.setEtat(Integer.parseInt(obj.get("etat").toString()));
                 
             }catch(IOException ex) {
@@ -193,7 +193,7 @@ public class ServiceReclamation {
     
     //Update 
     public boolean modifierReclamation(Reclamation reclamation) {
-        String url = Statics.BASE_URL +"/updateReclamation?id="+reclamation.getId()+"&objet="+reclamation.getObjet()+"&description="+reclamation.getdescription()+"&etat="+reclamation.getEtat();
+        String url = Statics.BASE_URL +"/updateReclamation?id="+reclamation.getId()+"&objet="+reclamation.getObjet()+"&description="+reclamation.getDescription()+"&etat="+reclamation.getEtat();
         req.setUrl(url);
         
         req.addResponseListener(new ActionListener<NetworkEvent>() {

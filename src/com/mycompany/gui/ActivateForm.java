@@ -16,8 +16,8 @@
  * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-/*
-package com.mycompany.gui;
+
+/*package com.mycompany.gui;
 
 import com.codename1.components.FloatingHint;
 import com.codename1.components.InfiniteProgress;
@@ -36,7 +36,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 import com.mycompany.services.ServiceUtilisateur;
-//import com.sun.mail.smtp.SMTPTransport;
+import com.sun.mail.smtp.SMTPTransport;
 import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message;
@@ -48,8 +48,7 @@ import javax.mail.internet.MimeMessage;
  * Account activation UI
  *
  * @author Shai Almog
- */
-/*
+ *//*
 public class ActivateForm extends BaseForm {
 
     TextField email;

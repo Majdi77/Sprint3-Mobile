@@ -32,6 +32,8 @@ import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
+import java.io.IOException;
+
 
 /**
  * Base class for the forms with common functionality
@@ -60,7 +62,7 @@ public class BaseForm extends Form {
     
     public Component createLineSeparator(int color) {
         Label separator = new Label("", "WhiteSeparator");
-        separator.getUnselectedStyle().setBgColor(color);
+        separator.getUnselectedStyle().setBgColor(0xFF9900);
         separator.getUnselectedStyle().setBgTransparency(255);
         separator.setShowEvenIfBlank(true);
         return separator;
@@ -79,11 +81,15 @@ public class BaseForm extends Form {
         tb.addComponentToSideMenu(LayeredLayout.encloseIn(
                 sl,
                 FlowLayout.encloseCenterBottom(
-                        new Label(res.getImage("profile-pic.jpg"), "PictureWhiteBackgrond"))
+                        new Label(res.getImage("2.png"), "PictureWhiteBackgrond"))
         ));
         
         tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new NewsfeedForm(res).show());
-        tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, e -> new ProfileForm(res).show());
+                tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, e -> {
+                    new ListCoachingForm(res).show();
+        });
+
+        tb.addMaterialCommandToSideMenu("Coaching", FontImage.MATERIAL_SETTINGS, e -> new ProfileForm(res).show());
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());
     }
 }

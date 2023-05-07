@@ -152,7 +152,7 @@ public class AjoutReclamationForm extends BaseForm {
         
         TextField description = new TextField("", "entrer description!!");
         description.setUIID("TextFieldBlack");
-        addStringValue("description",description);
+        addStringValue("Description",description);
         
         
         Button btnAjouter = new Button("Ajouter");

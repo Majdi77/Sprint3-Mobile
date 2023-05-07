@@ -39,7 +39,7 @@ public class ModifierReclamationForm extends BaseForm {
         super.addSideMenu(res);
         
         TextField objet = new TextField(r.getObjet() , "Objet" , 20 , TextField.ANY);
-        TextField description = new TextField(r.getObjet() , "description" , 20 , TextField.ANY);
+        TextField description = new TextField(r.getObjet() , "Description" , 20 , TextField.ANY);
                TextField etat = new TextField(String.valueOf(r.getEtat()) , "Etat" , 20 , TextField.ANY);
  
         //etat bch na3mlo comobbox bon lazm admin ya3mlleha approuver mais just chnwarikom ComboBox
@@ -76,7 +76,7 @@ public class ModifierReclamationForm extends BaseForm {
        btnModifier.addPointerPressedListener(l ->   { 
            
            r.setObjet(objet.getText());
-           r.setdescription(description.getText());
+           r.setDescription(description.getText());
            
            if(etatCombo.getSelectedIndex() == 0 ) {
                r.setEtat(0);

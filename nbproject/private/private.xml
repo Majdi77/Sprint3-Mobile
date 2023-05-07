@@ -4,7 +4,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Majdi/Desktop/Transporteur%20integ/src/com/mycompany/services/ServiceTransporteur.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/ListCoachingForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/TrieCoachingForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycomany/entities/Utilisateur.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/HomeCoachingForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycomany/entities/RendezVous.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/LIste2.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/services/ServiceReclamation.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/BaseForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/SessionManager.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/ListReclamationForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/services/ServiceUtilisateur.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycomany/entities/Coaching.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/AjoutReclamationForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/services/ServiceCoaching.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycomany/utils/Statics.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/StatistiquePieForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/rechercheForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/ModifierReclamationForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/ProfileForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/services/ServiceRendezVous.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/MapForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/ModifierCoachingForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycomany/entities/Reclamation.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/StatistiqueForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/mycompany/gui/AjoutCoachingForm.java</file>
+            <file>file:/C:/Users/Maram/Desktop/CodeNameOne-Formation-Youtube-main/src/com/pidevv/MyApplication.java</file>
         </group>
     </open-files>
 </project-private>
