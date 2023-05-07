@@ -11,49 +11,45 @@ import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Component;
-import static com.codename1.ui.Component.BOTTOM;
-import static com.codename1.ui.Component.CENTER;
-import static com.codename1.ui.Component.LEFT;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
-import com.codename1.ui.EncodedImage;
-import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.RadioButton;
 import com.codename1.ui.Tabs;
-import com.codename1.ui.TextArea;
+import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
-import com.codename1.ui.URLImage;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
-import com.codename1.ui.spinner.Picker;
 import com.codename1.ui.util.Resources;
-import com.mycomany.entities.Reclamation;
-import com.mycompany.services.ServiceReclamation;
-import java.util.ArrayList;
+import com.mycomany.entities.Produit;
+import com.mycompany.services.ServiceProduit;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
- * @author Lenovo
+ * @author 21692
  */
-public class ListReclamationForm extends BaseForm{
+public class AjoutProduitForm extends BaseForm  {
+     Form current;
+    public AjoutProduitForm(Resources res ) {
+    super("Newsfeed",BoxLayout.y()); //herigate men Newsfeed w l formulaire vertical
     
-    Form current;
-    public ListReclamationForm(Resources res ) {
-          super("Newsfeed",BoxLayout.y()); //herigate men Newsfeed w l formulaire vertical
         Toolbar tb = new Toolbar(true);
         current = this ;
         setToolbar(tb);
         getTitleArea().setUIID("Container");
-        setTitle("Ajout Reclamation");
+        setTitle("Ajout Produit");
         getContentPane().setScrollVisible(false);
         
         
@@ -66,22 +62,9 @@ public class ListReclamationForm extends BaseForm{
         Label s1 = new Label();
         Label s2 = new Label();
         
-        addTab(swipe,s1, res.getImage("back-logo.jpeg"),"","",res);
+        addTab(swipe,s1, res.getImage("mobile.jpg"),"","",res);
         
-        // Welcome current user
-        
-        System.out.println("user connecté id ="+ SessionManager.getId());
-        
-        
-        
-        System.out.println("user connecté username ="+ SessionManager.getUserName());
-        
-        System.out.println("user connecté password ="+ SessionManager.getPassowrd());
-        
-        System.out.println("user connecté email ="+ SessionManager.getEmail());
-        
-        
-        
+        //
         
          swipe.setUIID("Container");
         swipe.getContentPane().setUIID("Container");
@@ -122,23 +105,35 @@ public class ListReclamationForm extends BaseForm{
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
         ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Reclamations", barGroup);
+        RadioButton mesListes = RadioButton.createToggle("Mes Produits", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
+        RadioButton liste = RadioButton.createToggle("Front", barGroup);
         liste.setUIID("SelectBar");
-        RadioButton partage = RadioButton.createToggle("Reclamer", barGroup);
+        RadioButton partage = RadioButton.createToggle("ajouter", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
 
         mesListes.addActionListener((e) -> {
-               InfiniteProgress ip = new InfiniteProgress();
-        final Dialog ipDlg = ip.showInifiniteBlocking();
-        
-        //  ListReclamationForm a = new ListReclamationForm(res);
-          //  a.show();
+         ListProduitForm ListProduitForm = new ListProduitForm(res);
+            ListProduitForm.show();
+               
             refreshTheme();
         });
+        
+        mesListes.addActionListener((e) -> {
+         ListProduitForm ListProduitForm = new ListProduitForm(res);
+            ListProduitForm.show();
+               
+            refreshTheme();
+        });
+        
+       
+        
+        
+        
+        
+        
 
         add(LayeredLayout.encloseIn(
                 GridLayout.encloseIn(3, mesListes, liste, partage),
@@ -158,39 +153,117 @@ public class ListReclamationForm extends BaseForm{
         addOrientationListener(e -> {
             updateArrowPosition(barGroup.getRadioButton(barGroup.getSelectedIndex()), arrow);
         });
+
+        
+        //
         
       
-        //Appel affichage methode
-        ArrayList<Reclamation>list = ServiceReclamation.getInstance().affichageReclamations();
+        TextField nom = new TextField("", "entrer nom!!");
+        nom.setUIID("TextFieldBlack");
+        addStringValue("nom",nom);
         
-        for(Reclamation rec : list ) {
-             String urlImage ="back-logo.jpeg";//image statique pour le moment ba3d taw fi  videos jayin nwarikom image 
-            
-             Image placeHolder = Image.createImage(120, 90);
-             EncodedImage enc =  EncodedImage.createFromImage(placeHolder,false);
-             URLImage urlim = URLImage.createToStorage(enc, urlImage, urlImage, URLImage.RESIZE_SCALE);
-             
-                addButton(urlim,rec,res);
+        TextField description = new TextField("", "entrer description!!");
+        description.setUIID("TextFieldBlack");
+        addStringValue("Description",description);
         
-                ScaleImageLabel image = new ScaleImageLabel(urlim);
-                
-                Container containerImg = new Container();
-                
-                image.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
+        TextField prix = new TextField("", "entrer prix!!");
+        prix.setUIID("TextFieldBlack");
+        addStringValue("prix",prix);
+        
+        TextField quantite = new TextField("", "entrer quantite!!");
+        quantite.setUIID("TextFieldBlack");
+        addStringValue("quantite",quantite);
+        
+
+
+
+Button uploadBtn = new Button("Upload");
+String[] imgPath = {""};
+uploadBtn.addActionListener(e -> {
+    Display.getInstance().openGallery((ActionListener) (ActionEvent ev) -> {
+        if (ev != null && ev.getSource() != null) {
+            imgPath[0] = (String) ev.getSource();
         }
+    }, Display.GALLERY_IMAGE);
+});
+
+
+
+addStringValue("Image", uploadBtn);
+
+Button btnAjouter = new Button("Ajouter");
+addStringValue("", btnAjouter);
+
+
         
+        
+        
+        //onclick button event 
+
+        btnAjouter.addActionListener((e) -> {
+            
+            
+            try {
+                
+                if(nom.getText().equals("") || description.getText().equals("") || prix.getText().equals("")|| quantite.getText().equals("")) {
+                    Dialog.show("Veuillez vérifier les données","","Annuler", "OK");
+                }
+                
+                else {
+                    InfiniteProgress ip = new InfiniteProgress();; //Loading  after insert data
+                
+                    final Dialog iDialog = ip.showInfiniteBlocking();
+                  
+              
+                    //njibo iduser men session (current user)
+                    Produit r = new Produit(Integer.valueOf(quantite.getText()),
+
+                                  String.valueOf(nom.getText()).toString(),
+                                String.valueOf(description.getText()).toString(),
+                                Float.valueOf(prix.getText()),imgPath[0]);
+                                   
+                            
+                                  
+                               
+                     System.out.println("imageayssa"+imgPath[0]);
+                    System.out.println("data  reclamation == "+r);
+                    
+                    
+                    //appelle methode ajouterReclamation mt3 service Reclamation bch nzido données ta3na fi base 
+                    ServiceProduit.getInstance().ajoutProduit(r);
+                    
+                    iDialog.dispose(); //na7io loading ba3d ma3mlna ajout
+                    
+                    //ba3d ajout net3adaw lel ListREclamationForm
+                  
+                        //ba3d ajout net3adaw lel ListREclamationForm
+                    new ListProduitForm(res).show();
+                    
+                    refreshTheme();//Actualisation
+                            
+                }
+                
+            }catch(Exception ex ) {
+                ex.printStackTrace();
+            }
+            
+            
+            
+            
+            
+        });
         
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-       private void addTab(Tabs swipe, Label spacer , Image image, String string, String text, Resources res) {
+
+    private void addStringValue(String s, Component v) {
+        
+        add(BorderLayout.west(new Label(s,"PaddedLabel"))
+        .add(BorderLayout.CENTER,v));
+        add(createLineSeparator(0xeeeeee));
+    }
+
+    private void addTab(Tabs swipe, Label spacer , Image image, String string, String text, Resources res) {
         int size = Math.min(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight());
         
         if(image.getHeight() < size) {
@@ -222,7 +295,7 @@ public class ListReclamationForm extends BaseForm{
                     )
                 );
         
-        swipe.addTab("",res.getImage("back-logo.jpeg"), page1);
+        swipe.addTab("",res.getImage("mobile.jpg"), page1);
         
         
         
@@ -245,87 +318,9 @@ public class ListReclamationForm extends BaseForm{
         l.getUnselectedStyle().setMargin(LEFT, btn.getX() + btn.getWidth()  / 2  - l.getWidth() / 2 );
         l.getParent().repaint();
     }
-
-    private void addButton(Image img,Reclamation rec , Resources res) {
-        
-        int height = Display.getInstance().convertToPixels(11.5f);
-        int width = Display.getInstance().convertToPixels(14f);
-        
-        Button image = new Button(img.fill(width, height));
-        image.setUIID("Label");
-        Container cnt = BorderLayout.west(image);
-        
-        
-        //kif nzidouh  ly3endo date mathbih fi codenamone y3adih string w y5alih f symfony dateTime w ytab3ni cha3mlt taw yjih
-        Label objetTxt = new Label("Date : "+rec.getDate(),"NewsTopLine2");
-        Label dateTxt = new Label("objet : "+rec.getObjet(),"NewsTopLine2");
-        Label etatTxt = new Label("etat : "+rec.getEtat(),"NewsTopLine2" );
-        
-        createLineSeparator();
-        
-        if(rec.getEtat() == 0 ) {
-            etatTxt.setText("non Traitée");
-        }
-        else 
-            etatTxt.setText("Traitée");
-       
-        
-        //supprimer button
-        Label lSupprimer = new Label(" ");
-        lSupprimer.setUIID("NewsTopLine");
-        Style supprmierStyle = new Style(lSupprimer.getUnselectedStyle());
-        supprmierStyle.setFgColor(0xf21f1f);
-        
-        FontImage suprrimerImage = FontImage.createMaterial(FontImage.MATERIAL_DELETE, supprmierStyle);
-        lSupprimer.setIcon(suprrimerImage);
-        lSupprimer.setTextPosition(RIGHT);
-        
-        //click delete icon
-        lSupprimer.addPointerPressedListener(l -> {
-            
-            Dialog dig = new Dialog("Suppression");
-            
-            if(dig.show("Suppression","Vous voulez supprimer ce reclamation ?","Annuler","Oui")) {
-                dig.dispose();
-            }
-            else {
-                dig.dispose();
-                 }
-                //n3ayto l suuprimer men service Reclamation
-                if(ServiceReclamation.getInstance().deleteReclamation(rec.getId())) {
-                    new ListReclamationForm(res).show();
-                }
-           
-        });
-        
-        //Update icon 
-        Label lModifier = new Label(" ");
-        lModifier.setUIID("NewsTopLine");
-        Style modifierStyle = new Style(lModifier.getUnselectedStyle());
-        modifierStyle.setFgColor(0xf7ad02);
-        
-        FontImage mFontImage = FontImage.createMaterial(FontImage.MATERIAL_MODE_EDIT, modifierStyle);
-        lModifier.setIcon(mFontImage);
-        lModifier.setTextPosition(LEFT);
-        
-        
-        lModifier.addPointerPressedListener(l -> {
-            //System.out.println("hello update");
-            new ModifierReclamationForm(res,rec).show();
-        });
-        
-        
-        cnt.add(BorderLayout.CENTER,BoxLayout.encloseY(
-                
-                BoxLayout.encloseX(objetTxt),
-                BoxLayout.encloseX(dateTxt),
-                BoxLayout.encloseX(etatTxt,lModifier,lSupprimer)));
-        
-        
-        
-        add(cnt);
-    }
     
    
    
+    
 }
+

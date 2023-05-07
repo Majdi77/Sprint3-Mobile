@@ -11,43 +11,50 @@ import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Component;
+import static com.codename1.ui.Component.BOTTOM;
+import static com.codename1.ui.Component.CENTER;
+import static com.codename1.ui.Component.LEFT;
+import static com.codename1.ui.Component.RIGHT;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
+import com.codename1.ui.EncodedImage;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.RadioButton;
 import com.codename1.ui.Tabs;
-import com.codename1.ui.TextField;
+import com.codename1.ui.TextArea;
 import com.codename1.ui.Toolbar;
+import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.spinner.Picker;
 import com.codename1.ui.util.Resources;
-import com.mycomany.entities.Transporteur;
-import com.mycompany.services.ServiceTransporteur;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.mycomany.entities.Produit;
+import com.mycompany.services.ServiceProduit;
+import java.util.ArrayList;
 
 /**
  *
- * @author 21692
+ * @author Lenovo
  */
-public class AjoutTransporteurForm extends BaseForm  {
-     Form current;
-    public AjoutTransporteurForm(Resources res ) {
-    super("Newsfeed",BoxLayout.y()); //herigate men Newsfeed w l formulaire vertical
+public class ListProduitForm extends BaseForm{
     
+    Form current;
+    public ListProduitForm(Resources res ) {
+          super("Newsfeed",BoxLayout.y()); //herigate men Newsfeed w l formulaire vertical
         Toolbar tb = new Toolbar(true);
         current = this ;
         setToolbar(tb);
         getTitleArea().setUIID("Container");
-        setTitle("Ajout Transporteur");
+        setTitle("Mes produits");
         getContentPane().setScrollVisible(false);
         
         
@@ -60,9 +67,12 @@ public class AjoutTransporteurForm extends BaseForm  {
         Label s1 = new Label();
         Label s2 = new Label();
         
-        addTab(swipe,s1, res.getImage("t-shirt.png"),"","",res);
+        addTab(swipe,s1, res.getImage("mobile.jpg"),"","",res);
         
-        //
+        // Welcome current user
+        
+        
+        
         
          swipe.setUIID("Container");
         swipe.getContentPane().setUIID("Container");
@@ -103,23 +113,38 @@ public class AjoutTransporteurForm extends BaseForm  {
         add(LayeredLayout.encloseIn(swipe, radioContainer));
 
         ButtonGroup barGroup = new ButtonGroup();
-        RadioButton mesListes = RadioButton.createToggle("Mes Transporteurs", barGroup);
+        RadioButton mesListes = RadioButton.createToggle("Mes Produits", barGroup);
         mesListes.setUIID("SelectBar");
-        RadioButton liste = RadioButton.createToggle("Autres", barGroup);
+        RadioButton liste = RadioButton.createToggle("Font", barGroup);
         liste.setUIID("SelectBar");
         RadioButton partage = RadioButton.createToggle("ajouter", barGroup);
         partage.setUIID("SelectBar");
         Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
 
 
-        mesListes.addActionListener((e) -> {
-               InfiniteProgress ip = new InfiniteProgress();
-        final Dialog ipDlg = ip.showInifiniteBlocking();
-        
-        ListTransporteurForm a = new ListTransporteurForm(res);
-            a.show();
+     mesListes.addActionListener((e) -> {
+            ListProduitForm ListProduitForm = new ListProduitForm(res);
+            ListProduitForm.show();
+               
             refreshTheme();
         });
+        liste.addActionListener((e) -> {
+    // Ajouter l'action à effectuer lorsque le bouton "liste" est cliqué
+    // Par exemple, ouvrir un formulaire de statistiques
+    frontP frontP = new frontP(res);
+    frontP.show();
+
+    refreshTheme();
+});
+
+partage.addActionListener((e) -> {
+    // Ajouter l'action à effectuer lorsque le bouton "partage" est cliqué
+    // Par exemple, ouvrir un formulaire d'ajout de participants
+    AjoutProduitForm AjoutProduitForm = new AjoutProduitForm(res);
+    AjoutProduitForm.show();
+
+    refreshTheme();
+});
 
         add(LayeredLayout.encloseIn(
                 GridLayout.encloseIn(3, mesListes, liste, partage),
@@ -139,112 +164,39 @@ public class AjoutTransporteurForm extends BaseForm  {
         addOrientationListener(e -> {
             updateArrowPosition(barGroup.getRadioButton(barGroup.getSelectedIndex()), arrow);
         });
-
-        
-        //
         
       
-        TextField nom = new TextField("", "transporteur nom !");
-        nom.setUIID("TextFieldBlack");
-        addStringValue("nom",nom);
+        //Appel affichage methode
+        ArrayList<Produit>list = ServiceProduit.getInstance().affichageProduits();
         
-        TextField description = new TextField("", " vehicule description!");
-        description.setUIID("TextFieldBlack");
-        addStringValue("description",description);
-        
-        TextField prixStandard = new TextField("", "prix livraison !");
-        prixStandard.setUIID("TextFieldBlack");
-        addStringValue("prixStandard",prixStandard);
-        
-        TextField numero = new TextField("", "numero transporteur !");
-        numero.setUIID("TextFieldBlack");
-        addStringValue("numero",numero);
-        
-        
-        Button btnAjouter = new Button("Ajouter");
-        addStringValue("", btnAjouter);
-        
-        
-        //onclick button event 
-
-        btnAjouter.addActionListener((e) -> {
+        for(Produit rec : list ) {
+             String urlImage ="mobile.jpg";//image statique pour le moment ba3d taw fi  videos jayin nwarikom image 
             
-            
-            try {
+             Image placeHolder = Image.createImage(120, 90);
+             EncodedImage enc =  EncodedImage.createFromImage(placeHolder,false);
+             URLImage urlim = URLImage.createToStorage(enc, urlImage, urlImage, URLImage.RESIZE_SCALE);
+             
+                addButton(urlim,rec,res);
+        
+                ScaleImageLabel image = new ScaleImageLabel(urlim);
                 
-                if(nom.getText().equals("") || description.getText().equals("") || prixStandard.getText().equals("")|| numero.getText().equals("")) {
-                    Dialog.show("Veuillez vérifier les données","","Annuler", "OK");
-                }
+                Container containerImg = new Container();
                 
-                ///zedna hethyy controle de saisie aal nom
-                else if (containsDigit(nom.getText().toString())){
-        Dialog.show("Erreur", "Le champ nom ne doit pas contenir de chiffres.", "OK", null);
-    }
-                //controle de saisie aal description
-                               else if (description.getText().length() < 5){
-        Dialog.show("Erreur", "Le champ description ne doit pas contenir de moin de 5 caracteres.", "OK", null);
-    }
-                               //controle de saisie aal numero
-                               else if  (numero.getText().length() != 8) {
-    Dialog.show("Erreur", "Le numéro de téléphone doit contenir exactement 8 chiffres.", "OK", null);
-}
-                
-                else {
-                    InfiniteProgress ip = new InfiniteProgress();; //Loading  after insert data
-                
-                    final Dialog iDialog = ip.showInfiniteBlocking();
-                    
-              
-                    //njibo iduser men session (current user)
-                    Transporteur r = new Transporteur(
-                                   Integer.valueOf(numero.getText()),
-
-                                  String.valueOf(nom.getText()).toString(),
-                                     String.valueOf(description.getText()).toString(),
-
-                            Float.valueOf(prixStandard.getText())
-                            
-                                  
-                                  );
-                    
-                    System.out.println("data  reclamation == "+r);
-                    
-                    
-                    //appelle methode ajouterReclamation mt3 service Reclamation bch nzido données ta3na fi base 
-                    ServiceTransporteur.getInstance().ajoutTransporteur(r);
-                    
-                    iDialog.dispose(); //na7io loading ba3d ma3mlna ajout
-                    
-                    //ba3d ajout net3adaw lel ListREclamationForm
-                  
-                        //ba3d ajout net3adaw lel ListREclamationForm
-                    new ListTransporteurForm(res).show();
-                    
-                    refreshTheme();//Actualisation
-                            
-                }
-                
-            }catch(Exception ex ) {
-                ex.printStackTrace();
-            }
-            
-            
-            
-            
-            
-        });
+                image.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
+        }
+        
         
         
     }
-
-    private void addStringValue(String s, Component v) {
-        
-        add(BorderLayout.west(new Label(s,"PaddedLabel"))
-        .add(BorderLayout.CENTER,v));
-        add(createLineSeparator(0xeeeeee));
-    }
-
-    private void addTab(Tabs swipe, Label spacer , Image image, String string, String text, Resources res) {
+    
+    
+    
+    
+    
+    
+    
+    
+       private void addTab(Tabs swipe, Label spacer , Image image, String string, String text, Resources res) {
         int size = Math.min(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight());
         
         if(image.getHeight() < size) {
@@ -276,7 +228,7 @@ public class AjoutTransporteurForm extends BaseForm  {
                     )
                 );
         
-        swipe.addTab("",res.getImage("t-shirt.png"), page1);
+        swipe.addTab("",res.getImage("mobile.jpg"), page1);
         
         
         
@@ -299,17 +251,87 @@ public class AjoutTransporteurForm extends BaseForm  {
         l.getUnselectedStyle().setMargin(LEFT, btn.getX() + btn.getWidth()  / 2  - l.getWidth() / 2 );
         l.getParent().repaint();
     }
+
+    private void addButton(Image img,Produit rec , Resources res) {
+        
+        int height = Display.getInstance().convertToPixels(11.5f);
+        int width = Display.getInstance().convertToPixels(14f);
+        
+        Button image = new Button(img.fill(width, height));
+        image.setUIID("Label");
+        Container cnt = BorderLayout.west(image);
+        
+        
+        //kif nzidouh  ly3endo date mathbih fi codenamone y3adih string w y5alih f symfony dateTime w ytab3ni cha3mlt taw yjih
+        Label nomTxt = new Label("nom : "+rec.getNom(),"NewsTopLine2");
+        Label descriptionTxt = new Label("description : "+rec.getDescription(),"NewsTopLine2");
+        Label prixTxt = new Label("prix : "+rec.getPrix(),"NewsTopLine2" );
+        Label quantiteTxt = new Label("quantite : "+rec.getQuantite(),"NewsTopLine2" );
+       
+        
+        createLineSeparator();
+        
+       
+        //supprimer button
+        Label lSupprimer = new Label(" ");
+        lSupprimer.setUIID("NewsTopLine");
+        Style supprmierStyle = new Style(lSupprimer.getUnselectedStyle());
+        supprmierStyle.setFgColor(0xf21f1f);
+        
+        FontImage suprrimerImage = FontImage.createMaterial(FontImage.MATERIAL_DELETE, supprmierStyle);
+        lSupprimer.setIcon(suprrimerImage);
+        lSupprimer.setTextPosition(RIGHT);
+        
+        //click delete icon
+        lSupprimer.addPointerPressedListener(l -> {
+            
+            Dialog dig = new Dialog("Suppression");
+            
+            if(dig.show("Suppression","Vous voulez supprimer ce produit ?","Annuler","Oui")) {
+                dig.dispose();
+            }
+            else {
+                dig.dispose();
+                 }
+                //n3ayto l suuprimer men service Reclamation
+                if(ServiceProduit.getInstance().deleteProduit(rec.getId())) {
+                    new ListProduitForm(res).show();
+                }
+           
+        });
+        
+        //Update icon 
+        Label lModifier = new Label(" ");
+        lModifier.setUIID("NewsTopLine");
+        Style modifierStyle = new Style(lModifier.getUnselectedStyle());
+        modifierStyle.setFgColor(0xf7ad02);
+        
+        FontImage mFontImage = FontImage.createMaterial(FontImage.MATERIAL_MODE_EDIT, modifierStyle);
+        lModifier.setIcon(mFontImage);
+        lModifier.setTextPosition(LEFT);
+        
+        
+        lModifier.addPointerPressedListener(l -> {
+            //System.out.println("hello update");
+            new ModifierProduitForm(res,rec).show();
+        });
+        
+        
+        cnt.add(BorderLayout.CENTER,BoxLayout.encloseY(
+                
+                BoxLayout.encloseX(nomTxt),
+                BoxLayout.encloseX(descriptionTxt),
+                BoxLayout.encloseX(prixTxt),
+               BoxLayout.encloseX(quantiteTxt),
+
+
+               BoxLayout.encloseX(lModifier,lSupprimer)));
+        
+        
+        
+        add(cnt);
+    }
     
    
-   public static boolean containsDigit(String s){
-        //tow new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-         for (char c : s.toCharArray()) {
-        if (Character.isDigit(c)) {
-            return true;
-        }
-    }
-    return false;
-    }
-    
+   
 }
-

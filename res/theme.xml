@@ -3,13 +3,13 @@
 <resource majorVersion="1" minorVersion="11" useXmlUI="false">
     <image name="activation-background.jpg"  />
     <image name="back-logo.jpeg"  />
-    <image name="back-logo.png"  />
     <image name="back.png"  />
     <image name="confirmation-background.jpg"  />
     <image name="dog.jpg"  />
     <image name="facebook-logo.png" type="multi"  />
     <image name="Logo.png" type="multi"  />
     <image name="map-pin.jpg"  />
+    <image name="mobile.jpg"  />
     <image name="news-item-1.jpg"  />
     <image name="news-item-2.jpg"  />
     <image name="news-item-3.jpg"  />
@@ -26,15 +26,14 @@
     <image name="signup-background.jpg"  />
     <image name="smily.png" type="multi"  />
     <image name="t-shirt.jpg"  />
-    <image name="t-shirt.png"  />
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
         <val key="@tabPlacementInt" value="0" />
         <val key="Activate.bgImage" value="activation-background.jpg" />
         <val key="Activate.bgType" value="33" />
-        <val key="Activate.margin" value="0.0,0.0,0.0,0.0" />
+        <val key="Activate.margin" value="0,0,0,0" />
         <val key="Activate.padUnit" value="0,0,2,0" />
-        <val key="Activate.padding" value="0.0,3.0,0.0,0.0" />
+        <val key="Activate.padding" value="0,3,0,0" />
         <val key="Activate.transparency" value="255" />
         <val key="BottomPad.align" value="4" />
         <val key="BottomPad.fgColor" value="a2a1b8" />
@@ -45,21 +44,21 @@
         <val key="BottomPad.padding" value="0,0,0,0" />
         <val key="BottomPad.transparency" value="0" />
         <val key="Button.align" value="4" />
-        <border key="Button.border" type="round" roundBorderColor="3381759" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <border key="Button.border" type="round" roundBorderColor="16723285" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="Button.fgColor" value="ffffff" />
         <font key="Button.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
         <val key="Button.marUnit" value="2,2,2,2" />
-        <val key="Button.margin" value="3.0,3.0,2.0,2.0" />
+        <val key="Button.margin" value="3,3,2,2" />
         <val key="Button.padUnit" value="2,2,2,2" />
-        <val key="Button.padding" value="2.0,2.0,2.0,2.0" />
+        <val key="Button.padding" value="2,2,2,2" />
         <val key="Button.press#align" value="4" />
-        <border key="Button.press#border" type="round" roundBorderColor="16777215" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
-        <val key="Button.press#fgColor" value="333333" />
+        <border key="Button.press#border" type="round" roundBorderColor="12982329" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="Button.press#fgColor" value="ffffff" />
         <font key="Button.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.0" />
         <val key="Button.press#marUnit" value="2,2,2,2" />
-        <val key="Button.press#margin" value="3.0,3.0,2.0,2.0" />
+        <val key="Button.press#margin" value="3,3,2,2" />
         <val key="Button.press#padUnit" value="2,2,2,2" />
-        <val key="Button.press#padding" value="2.0,2.0,2.0,2.0" />
+        <val key="Button.press#padding" value="2,2,2,2" />
         <val key="Button.sel#align" value="4" />
         <border key="Button.sel#border" type="round" roundBorderColor="16723285" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="Button.sel#fgColor" value="ffffff" />
@@ -175,25 +174,25 @@
         <val key="PictureWhiteBackgrond.padding" value="1,1,1,1" />
         <val key="PictureWhiteBackgrond.transparency" value="255" />
         <val key="SelectBar.align" value="4" />
-        <val key="SelectBar.bgColor" value="99ff" />
+        <val key="SelectBar.bgColor" value="ff2d55" />
         <val key="SelectBar.bgImage" value="news-tab-down.png" />
         <val key="SelectBar.bgType" value="30" />
         <border key="SelectBar.border" type="empty" />
-        <val key="SelectBar.fgColor" value="333333" />
+        <val key="SelectBar.fgColor" value="feb2c1" />
         <font key="SelectBar.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
-        <val key="SelectBar.margin" value="0.0,0.0,0.0,0.0" />
+        <val key="SelectBar.margin" value="0,0,0,0" />
         <val key="SelectBar.padUnit" value="2,0,2,0" />
-        <val key="SelectBar.padding" value="2.0,3.0,0.0,0.0" />
+        <val key="SelectBar.padding" value="2,3,0,0" />
         <val key="SelectBar.press#align" value="4" />
-        <val key="SelectBar.press#bgColor" value="ffcccc" />
-        <val key="SelectBar.press#bgImage" value="activation-background.jpg" />
+        <val key="SelectBar.press#bgColor" value="ff2d55" />
+        <val key="SelectBar.press#bgImage" value="news-tab-down.png" />
         <val key="SelectBar.press#bgType" value="30" />
         <border key="SelectBar.press#border" type="empty" />
         <val key="SelectBar.press#fgColor" value="ffffff" />
         <font key="SelectBar.press#font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
-        <val key="SelectBar.press#margin" value="0.0,0.0,0.0,0.0" />
+        <val key="SelectBar.press#margin" value="0,0,0,0" />
         <val key="SelectBar.press#padUnit" value="2,0,2,0" />
-        <val key="SelectBar.press#padding" value="2.0,3.0,0.0,0.0" />
+        <val key="SelectBar.press#padding" value="2,3,0,0" />
         <val key="SelectBar.press#transparency" value="255" />
         <val key="SelectBar.sel#align" value="4" />
         <val key="SelectBar.sel#bgColor" value="ff2d55" />
@@ -336,7 +335,6 @@
         <val key="transparency" value="0" />
     </theme>
     <image name="timeline-background.jpg"  />
-    <image name="transp.png"  />
     <image name="twitter-logo.png" type="multi"  />
     <image name="welcome-background.jpg"  />
     <image name="welcome-slide-1.png" type="multi"  />

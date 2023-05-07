@@ -9,39 +9,33 @@ package com.mycomany.entities;
  *
  * @author 21692
  */
-public class Transporteur {
+public class Produit {
     
-    private int id,numero;
+    private int id,quantite;
     private String nom,description;
     private float prix;
     private String image;
 
-    public Transporteur(int id, int numero, String nom, String description, float prix, String image) {
+    public Produit(int id, int quantite, String nom, String description, float prix, String image) {
         this.id = id;
-        this.numero = numero;
+        this.quantite = quantite;
         this.nom = nom;
         this.description = description;
         this.prix = prix;
         this.image = image;
     }
 
-    public Transporteur(int numero, String nom, String description, float prix, String image) {
-        this.numero = numero;
+  
+    public Produit(int quantite, String nom, String description, float prix,String image) {
+        this.quantite = quantite;
         this.nom = nom;
         this.description = description;
         this.prix = prix;
-        this.image = image;
+        this.image=image;
     }
 
-    public Transporteur(int numero, String nom, String description, float prix) {
-        this.numero = numero;
-        this.nom = nom;
-        this.description = description;
-        this.prix = prix;
-    }
-
-    public Transporteur() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Produit() {
+        
     }
 
     public int getId() {
@@ -52,12 +46,12 @@ public class Transporteur {
         this.id = id;
     }
 
-    public int getnumero() {
-        return numero;
+    public int getQuantite() {
+        return quantite;
     }
 
-    public void setnumero(int numero) {
-        this.numero = numero;
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
     }
 
     public String getNom() {
@@ -68,19 +62,19 @@ public class Transporteur {
         this.nom = nom;
     }
 
-    public String getdescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setdescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public float getprix() {
+    public float getPrix() {
         return prix;
     }
 
-    public void setprix(float prix) {
+    public void setPrix(float prix) {
         this.prix = prix;
     }
 
